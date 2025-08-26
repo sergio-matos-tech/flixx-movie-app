@@ -15,41 +15,55 @@ const global = {
   },
 };
 
-async function displayPopularMovies() {
-  const { results } = await fetchAPIdataFromTMDB('movie/top_rated');
+async function displayMovies(category) {
+  // Clear the existing movies from the display
+  document.querySelector('#popular-movies').innerHTML = '';
+
+  const { results } = await fetchAPIdataFromTMDB(category);
 
   results.forEach((movie) => {
     const div = document.createElement('div');
     div.classList.add('card');
     div.innerHTML = `
-          <a href="movie-details.html?id=${movie.id}">
-            ${
-              movie.poster_path
-                ? `<img
-              src="https://image.tmdb.org/t/p/w500${movie.poster_path}"
-              class="card-img-top"
-              alt="${movie.title}"
-            />`
-                : `<img
-            src="../images/no-image.jpg"
-            class="card-img-top"
-            alt="${movie.title}"
-          />`
-            }
-          </a>
-          <div class="card-body">
-            <h5 class="card-title">${movie.title}</h5>
-            <p class="card-text">
-              <small class="text-muted">Release: ${movie.release_date}</small>
-            </p>
-            <p class="card-text">
-              <i class="fas fa-star text-primary"></i>
-              ${movie.vote_average.toFixed(1)} / 10
-            </p>
-          </div>
-        `;
+      <a href="movie-details.html?id=${movie.id}">
+        ${
+          movie.poster_path
+            ? `<img
+          src="https://image.tmdb.org/t/p/w500${movie.poster_path}"
+          class="card-img-top"
+          alt="${movie.title}"
+        />`
+            : `<img
+        src="../images/no-image.jpg"
+        class="card-img-top"
+        alt="${movie.title}"
+      />`
+        }
+      </a>
+      <div class="card-body">
+        <h5 class="card-title">${movie.title}</h5>
+        <p class="card-text">
+          <small class="text-muted">Release: ${movie.release_date}</small>
+        </p>
+      </div>
+    `;
 
     document.querySelector('#popular-movies').appendChild(div);
+  });
+}
+
+function setupFilterButtons() {
+  const filterButtons = document.querySelectorAll('#filter-buttons .btn');
+  
+  filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      filterButtons.forEach(btn => btn.classList.remove('active'));
+      
+      button.classList.add('active');
+      
+      const category = button.getAttribute('data-category');
+      displayMovies(category);
+    });
   });
 }
 
@@ -77,8 +91,9 @@ function initApp() {
     switch (global.currentPage) {
         case '/':
         case '/index.html':
-            displayPopularMovies();
-            break;
+            displayMovies('movie/popular'); 
+            setupFilterButtons();
+      break;
         case '/shows.html':
             console.log('"SHOWS PAGE"');
             break;

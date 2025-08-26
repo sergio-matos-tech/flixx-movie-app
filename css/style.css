@@ -47,18 +47,25 @@ ul {
 
 .btn {
   display: inline-block;
-  padding: 0.5rem 1rem;
-  border: 1px solid var(--color-secondary);
-  border-radius: 5px;
+  padding: 0.7rem 1.5rem; 
+  border: none; 
+  border-radius: 10px; 
   color: #fff;
   cursor: pointer;
-  background: transparent;
+  background: #04376b; 
   transition: all 0.3s ease-in-out;
+  font-weight: bold;
+}
+
+.btn.active {
+  background: var(--color-secondary);
+  color: #fff;
+  box-shadow: 0 0 8px var(--color-secondary); 
 }
 
 .btn:hover {
-  background: var(--color-secondary);
-  color: #000;
+  background: #0a4b8f;
+  transform: translateY(-2px); 
 }
 
 .btn:disabled {
@@ -69,6 +76,29 @@ ul {
 .btn:disabled:hover {
   background: transparent;
   color: #fff;
+}
+
+#filter-section {
+  max-width: 800px; 
+  margin: 40px auto; 
+  padding: 10px; 
+  background: rgba(0, 0, 0, 0.3); 
+  border-radius: 10px;
+  position: relative;
+  z-index: 10;
+}
+
+#filter-buttons .btn.active {
+  background-color: #00aaff; 
+  color: #fff;
+  font-weight: bold;
+}
+
+#filter-buttons {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap; 
+  justify-content: center;
 }
 
 .container {
