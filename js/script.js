@@ -15,8 +15,15 @@ const global = {
   },
 };
 
+function showSpinner() {
+    document.querySelector('.spinner').classList.add('show');
+}
+
+function hideSpinner() {
+    document.querySelector('.spinner').classList.remove('show');
+}
+
 async function displayMovies(category) {
-  // Clear the existing movies from the display
   document.querySelector('#popular-movies').innerHTML = '';
 
   const { results } = await fetchAPIdataFromTMDB(category);
@@ -52,6 +59,57 @@ async function displayMovies(category) {
   });
 }
 
+async function displayTvShows(category) {
+  document.querySelector('#popular-shows').innerHTML = '';
+
+  const { results } = await fetchAPIdataFromTMDB(category);
+
+  results.forEach((show) => {
+    const div = document.createElement('div');
+    div.classList.add('card');
+    div.innerHTML = `
+      <a href="tv-details.html?id=${show.id}">
+        ${
+          show.poster_path
+            ? `<img
+          src="https://image.tmdb.org/t/p/w500${show.poster_path}"
+          class="card-img-top"
+          alt="${show.name}"
+        />`
+            : `<img
+        src="../images/no-image.jpg"
+        class="card-img-top"
+        alt="${show.name}"
+      />`
+        }
+      </a>
+      <div class="card-body">
+        <h5 class="card-title">${show.name}</h5>
+        <p class="card-text">
+          <small class="text-muted">First Aired: ${show.first_air_date}</small>
+        </p>
+      </div>
+    `;
+
+    document.querySelector('#popular-shows').appendChild(div);
+  });
+}
+
+function setupTvShowFilterButtons() {
+  const filterButtons = document.querySelectorAll('#filter-buttons .btn');
+
+  filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      filterButtons.forEach(btn => btn.classList.remove('active'));
+
+      button.classList.add('active');
+
+      const category = button.getAttribute('data-category');
+      displayTvShows(category);
+    });
+  });
+}
+
 function setupFilterButtons() {
   const filterButtons = document.querySelectorAll('#filter-buttons .btn');
   
@@ -73,7 +131,11 @@ async function fetchAPIdataFromTMDB(endpoint) {
 
     const response = await fetch(`${API_URL}${endpoint}?api_key=${API_KEY}&language=en-US`);
 
+    showSpinner();
+
     const data = await response.json();
+
+    hideSpinner();
     
     return data;
 }
@@ -91,11 +153,12 @@ function initApp() {
     switch (global.currentPage) {
         case '/':
         case '/index.html':
-            displayMovies('movie/popular'); 
+            displayMovies('movie/popular');
             setupFilterButtons();
       break;
         case '/shows.html':
-            console.log('"SHOWS PAGE"');
+            displayTvShows('tv/popular');
+            setupTvShowFilterButtons(); 
             break;
         case '/movie-details.html':
             console.log('"MOVIE DETAILS PAGE"');
@@ -109,8 +172,8 @@ function initApp() {
         default:
             console.log('404 PAGE NOT FOUND');
             break;
-    }     
-    
+    }
+
     hightlightActiveLink();
 }
 
