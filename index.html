@@ -17,6 +17,11 @@
     <script src="lib/swiper.js"></script>
     <script src="js/script.js" defer></script>
     <title>Flixx | Movie App</title>
+    <style>
+      .heading-with-filter {
+        margin-bottom: 20px;
+      }
+    </style>
   </head>
   <body>
     <header class="main-header">
@@ -40,7 +45,6 @@
       <div class="container">
         <div id="alert"></div>
         <form action="/search.html" class="search-form">
-          <!-- Hidden input for type=movie -->
           <input type="hidden" name="type" value="movie">
           <div class="search-flex">
             <input
@@ -65,9 +69,16 @@
       </div>
     </section>
 
-    <!-- Popular Movies -->
+    <!-- Movies -->
     <section class="container">
-      <h2>Popular Movies</h2>
+      <div class="heading-with-filter">
+        <h2>Movies</h2>
+        <div id="filter-buttons" class="filter">
+          <button class="btn active" data-category="movie/popular">Popular</button>
+          <button class="btn" data-category="movie/top_rated">Top Rated</button>
+          <button class="btn" data-category="movie/upcoming">Upcoming</button>
+        </div>
+      </div>
       <div id="popular-movies" class="grid"></div>
     </section>
 

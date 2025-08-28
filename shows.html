@@ -17,6 +17,11 @@
     <script src="lib/swiper.js"></script>
     <script src="js/script.js" defer></script>
     <title>Flixx | TV Shows</title>
+    <style>
+      .heading-with-filter {
+        margin-bottom: 20px;
+      }
+    </style>
   </head>
   <body>
     <header class="main-header">
@@ -40,7 +45,6 @@
       <div class="container">
         <div id="alert"></div>
         <form action="/search.html" class="search-form">
-           <!-- Hidden input for type=tv -->
           <input type="hidden" name="type" value="tv">
           <div class="search-flex">
             <input
@@ -65,9 +69,15 @@
       </div>
     </section>
 
-    <!-- Popular TV Shows -->
+    <!-- TV Shows -->
     <section class="container">
-      <h2>Popular TV Shows</h2>
+      <div class="heading-with-filter">
+        <h2>TV Shows</h2>
+        <div id="filter-buttons" class="filter">
+          <button class="btn active" data-category="tv/popular">Popular</button>
+          <button class="btn" data-category="tv/top_rated">Top Rated</button>
+        </div>
+      </div>
       <div id="popular-shows" class="grid"></div>
     </section>
 
