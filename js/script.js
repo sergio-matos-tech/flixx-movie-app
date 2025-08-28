@@ -357,7 +357,6 @@ async function search() {
 }
 
 function displaySearchResults(results) {
-  // Clear previous results
   document.querySelector('#search-results').innerHTML = '';
   document.querySelector('#search-results-heading').innerHTML = '';
   document.querySelector('#pagination').innerHTML = '';
@@ -420,24 +419,22 @@ function displayPagination() {
 
   document.querySelector('#pagination').appendChild(div);
 
-  // Disable prev button if on first page
+
   if (global.search.page === 1) {
     document.querySelector('#prev').disabled = true;
   }
 
-  // Disable next button if on last page
   if (global.search.page === global.search.totalPages) {
     document.querySelector('#next').disabled = true;
   }
 
-  // Next page
+
   document.querySelector('#next').addEventListener('click', async () => {
     global.search.page++;
     const { results, total_pages } = await searchAPIData();
     displaySearchResults(results);
   });
 
-  // Prev page
   document.querySelector('#prev').addEventListener('click', async () => {
     global.search.page--;
     const { results, total_pages } = await searchAPIData();
@@ -460,6 +457,15 @@ async function searchAPIData() {
   hideSpinner();
 
   return data;
+}
+
+function showAlert(message, className = 'error') {
+  const alertEl = document.createElement('div');
+  alertEl.classList.add('alert', className);
+  alertEl.appendChild(document.createTextNode(message));
+  document.querySelector('#alert').appendChild(alertEl);
+
+  setTimeout(() => alertEl.remove(), 3000);
 }
 
 function setupTvShowFilterButtons() {

@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="css/spinner.css" />
     <script src="lib/swiper.js"></script>
     <script src="js/script.js" defer></script>
-    <title>Flixx | Movies</title>
+    <title>Flixx | Movie App</title>
   </head>
   <body>
     <header class="main-header">
@@ -35,34 +35,19 @@
       </div>
     </header>
 
-    <!-- Now Playing Section -->
-    <section class="now-playing">
-      <h2>Now Playing</h2>
-      <div class="swiper">
-        <div class="swiper-wrapper">
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- Search Movies -->
     <section class="search">
       <div class="container">
         <div id="alert"></div>
         <form action="/search.html" class="search-form">
-          <!-- movies and shows radio box -->
-          <div class="search-radio">
-            <input type="radio" id="movie" name="type" value="movie" checked />
-            <label for="movies">Movies</label>
-            <input type="radio" id="tv" name="type" value="tv" />
-            <label for="shows">TV Shows</label>
-          </div>
+          <!-- Hidden input for type=movie -->
+          <input type="hidden" name="type" value="movie">
           <div class="search-flex">
             <input
               type="text"
               name="search-term"
               id="search-term"
-              placeholder="Enter search term"
+              placeholder="Enter movie name"
             />
             <button class="btn" type="submit">
               <i class="fas fa-search"></i>
@@ -72,25 +57,17 @@
       </div>
     </section>
 
-<section id="filter-section" class="container">
-  <div id="filter-buttons">
-    <button class="btn active" data-category="movie/popular">Popular</button>
-    <button class="btn" data-category="movie/top_rated">Top Rated</button>
-    <button class="btn" data-category="movie/upcoming">Upcoming</button>
-    <button class="btn" data-category="movie/now_playing">Now Playing</button>
-    <button class="btn" data-category="trending/movie/day">Trending Today</button>
-  </div>
-</section>
+    <!-- Now Playing Movies -->
+    <section class="now-playing">
+      <h2>Now Playing</h2>
+      <div class="swiper">
+        <div class="swiper-wrapper"></div>
+      </div>
+    </section>
 
-<section id="popular-movies" class="grid">
-  </section>
-
-  <section id="popular-movies" class="grid">
-  </section>
-
-    <!-- Top Rated Movies -->
+    <!-- Popular Movies -->
     <section class="container">
-      <h2>Top Rated Movies</h2>
+      <h2>Popular Movies</h2>
       <div id="popular-movies" class="grid"></div>
     </section>
 

@@ -33,132 +33,15 @@
       </div>
     </header>
 
-    <!-- Search Movies -->
-    <section class="search">
-      <div class="container">
-        <div id="alert"></div>
-        <form action="/search.html" class="search-form">
-          <div class="search-radio">
-            <input type="radio" id="movie" name="type" value="movie" checked />
-            <label for="movies">Movies</label>
-            <input type="radio" id="tv" name="type" value="tv" />
-            <label for="shows">TV Shows</label>
-          </div>
-          <div class="search-flex">
-            <input
-              type="text"
-              name="search-term"
-              id="search-term"
-              placeholder="Enter search term"
-            />
-            <button class="btn" type="submit">
-              <i class="fas fa-search"></i>
-            </button>
-          </div>
-        </form>
-      </div>
-    </section>
-
     <!-- Search Results -->
     <section id="search-results-wrapper" class="container">
-      <heading id="search-results-heading"></heading>
-      <div id="search-results" class="grid">
-        <div class="card">
-          <a href="#">
-            <img src="images/no-image.jpg" class="card-img-top" alt="" />
-          </a>
-          <div class="card-body">
-            <h5 class="card-title">Movie Or Show Name</h5>
-            <p class="card-text">
-              <small class="text-muted">Release: XX/XX/XXXX</small>
-            </p>
-          </div>
-        </div>
-        <div class="card">
-          <a href="#">
-            <img src="images/no-image.jpg" class="card-img-top" alt="" />
-          </a>
-          <div class="card-body">
-            <h5 class="card-title">Movie Or Show Name</h5>
-            <p class="card-text">
-              <small class="text-muted">Release: XX/XX/XXXX</small>
-            </p>
-          </div>
-        </div>
-        <div class="card">
-          <a href="#">
-            <img src="images/no-image.jpg" class="card-img-top" alt="" />
-          </a>
-          <div class="card-body">
-            <h5 class="card-title">Movie Or Show Name</h5>
-            <p class="card-text">
-              <small class="text-muted">Release: XX/XX/XXXX</small>
-            </p>
-          </div>
-        </div>
-        <div class="card">
-          <a href="#">
-            <img src="images/no-image.jpg" class="card-img-top" alt="" />
-          </a>
-          <div class="card-body">
-            <h5 class="card-title">Movie Or Show Name</h5>
-            <p class="card-text">
-              <small class="text-muted">Release: XX/XX/XXXX</small>
-            </p>
-          </div>
-        </div>
-        <div class="card">
-          <a href="#">
-            <img src="images/no-image.jpg" class="card-img-top" alt="" />
-          </a>
-          <div class="card-body">
-            <h5 class="card-title">Movie Or Show Name</h5>
-            <p class="card-text">
-              <small class="text-muted">Release: XX/XX/XXXX</small>
-            </p>
-          </div>
-        </div>
-        <div class="card">
-          <a href="#">
-            <img src="images/no-image.jpg" class="card-img-top" alt="" />
-          </a>
-          <div class="card-body">
-            <h5 class="card-title">Movie Or Show Name</h5>
-            <p class="card-text">
-              <small class="text-muted">Release: XX/XX/XXXX</small>
-            </p>
-          </div>
-        </div>
-        <div class="card">
-          <a href="#">
-            <img src="images/no-image.jpg" class="card-img-top" alt="" />
-          </a>
-          <div class="card-body">
-            <h5 class="card-title">Movie Or Show Name</h5>
-            <p class="card-text">
-              <small class="text-muted">Release: XX/XX/XXXX</small>
-            </p>
-          </div>
-        </div>
-        <div class="card">
-          <a href="#">
-            <img src="images/no-image.jpg" class="card-img-top" alt="" />
-          </a>
-          <div class="card-body">
-            <h5 class="card-title">Movie Or Show Name</h5>
-            <p class="card-text">
-              <small class="text-muted">Release: XX/XX/XXXX</small>
-            </p>
-          </div>
-        </div>
-      </div>
-      <div id="pagination">
-        <div class="pagination">
-          <button class="btn btn-primary" id="prev">Prev</button>
-          <button class="btn btn-primary" id="next">Next</button>
-          <div class="page-counter">Page 1 of 5</div>
-        </div>
-      </div>
+      <!-- Alert will be dynamically inserted here by JS -->
+      <div id="alert"></div>
+      <div id="search-results-heading"></div>
+      <!-- Results will be dynamically inserted here by JS -->
+      <div id="search-results" class="grid"></div>
+      <!-- Pagination will be dynamically inserted here by JS -->
+      <div id="pagination"></div>
     </section>
 
     <!-- Footer -->

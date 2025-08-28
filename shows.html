@@ -35,32 +35,43 @@
       </div>
     </header>
 
-    <section class="now-playing">
-      <h2>On The Air</h2>
-      <div class="swiper">
-        <div class="swiper-wrapper">
+    <!-- Search TV Shows -->
+    <section class="search">
+      <div class="container">
+        <div id="alert"></div>
+        <form action="/search.html" class="search-form">
+           <!-- Hidden input for type=tv -->
+          <input type="hidden" name="type" value="tv">
+          <div class="search-flex">
+            <input
+              type="text"
+              name="search-term"
+              id="search-term"
+              placeholder="Enter TV show name"
+            />
+            <button class="btn" type="submit">
+              <i class="fas fa-search"></i>
+            </button>
           </div>
-        </div>
+        </form>
       </div>
     </section>
 
+    <!-- On The Air TV Shows -->
+    <section class="now-playing">
+      <h2>On The Air TV Shows</h2>
+      <div class="swiper">
+        <div class="swiper-wrapper"></div>
+      </div>
+    </section>
+
+    <!-- Popular TV Shows -->
     <section class="container">
       <h2>Popular TV Shows</h2>
+      <div id="popular-shows" class="grid"></div>
     </section>
 
-    <section id="filter-section" class="container">
-      <div id="filter-buttons" class="filter-buttons">
-        <button class="btn active" data-category="tv/popular">Popular</button>
-        <button class="btn" data-category="tv/top_rated">Top Rated</button>
-        <button class="btn" data-category="tv/on_the_air">On The Air</button>
-        <button class="btn" data-category="tv/airing_today">Airing Today</button>
-      </div>
-    </section>
-
-    <div id="popular-shows" class="container grid">
-      </div>
-
-
+    <!-- Footer -->
     <footer class="main-footer">
       <div class="container">
         <div class="logo"><span>FLIXX</span></div>
