@@ -502,15 +502,33 @@ async function fetchAPIdataFromTMDB(endpoint) {
     const API_KEY = global.api.apiKey;
     const API_URL = global.api.apiUrl;
 
-    const response = await fetch(`${API_URL}${endpoint}?api_key=${API_KEY}&language=en-US`);
-
     showSpinner();
 
-    const data = await response.json();
+    try {
+      const response = await fetch(
+        `${API_URL}${endpoint}?api_key=${API_KEY}&language=en-US`
+      );
 
-    hideSpinner();
-    
-    return data;
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      const data = await response.json();
+
+      hideSpinner();
+
+
+      return data;
+    } catch (error) {
+
+      hideSpinner();
+
+      console.error('API Fetch Error:', error);
+      
+      showAlert('Error: Could not fetch data. Please try again later.', 'error');
+      
+      return null; 
+    }
 }
 
 function hightlightActiveLink() {
