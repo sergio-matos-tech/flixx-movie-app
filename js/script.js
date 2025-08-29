@@ -109,7 +109,7 @@ async function displayMovies(category) {
           alt="${movie.title}"
         />`
             : `<img
-        src="../images/no-image.jpg"
+        src="images/no-image.jpg"
         class="card-img-top"
         alt="${movie.title}"
       />`
@@ -541,19 +541,21 @@ function hightlightActiveLink() {
 }
 
 function initApp() {
-    if (window.location.pathname.endsWith('/') || window.location.pathname.endsWith('index.html')) {
+    const path = window.location.pathname;
+
+    if (path.endsWith('/') || path.endsWith('index.html')) {
         displaySlider();
         displayMovies('movie/popular');
         setupFilterButtons();
-    } else if (window.location.pathname.includes('shows.html')) {
+    } else if (path.includes('shows.html')) {
         displayTVSlider();
         displayTvShows('tv/popular');
         setupTvShowFilterButtons();
-    } else if (window.location.pathname.includes('movie-details.html')) {
+    } else if (path.includes('movie-details.html')) {
         displayMovieDetails();
-    } else if (window.location.pathname.includes('tv-details.html')) {
+    } else if (path.includes('tv-details.html')) {
         displayShowDetails();
-    } else if (window.location.pathname.includes('search.html')) {
+    } else if (path.includes('search.html')) {
         search();
     }
 
