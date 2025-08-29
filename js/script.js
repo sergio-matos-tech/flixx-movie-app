@@ -541,30 +541,20 @@ function hightlightActiveLink() {
 }
 
 function initApp() {
-    switch (global.currentPage) {
-        case '/':
-        case '/index.html':
-            displaySlider();
-            displayMovies('movie/popular');
-            setupFilterButtons();
-      break;
-        case '/shows.html':
-          displayTVSlider()
-          displayTvShows('tv/popular');
-          setupTvShowFilterButtons(); 
-          break;
-        case '/movie-details.html':
-            displayMovieDetails();
-            break;
-        case '/tv-details.html':
-            displayShowDetails();
-            break;
-        case '/search.html':
-            search();
-            break;
-        default:
-            console.log('404 PAGE NOT FOUND');
-            break;
+    if (window.location.pathname.endsWith('/') || window.location.pathname.endsWith('index.html')) {
+        displaySlider();
+        displayMovies('movie/popular');
+        setupFilterButtons();
+    } else if (window.location.pathname.includes('shows.html')) {
+        displayTVSlider();
+        displayTvShows('tv/popular');
+        setupTvShowFilterButtons();
+    } else if (window.location.pathname.includes('movie-details.html')) {
+        displayMovieDetails();
+    } else if (window.location.pathname.includes('tv-details.html')) {
+        displayShowDetails();
+    } else if (window.location.pathname.includes('search.html')) {
+        search();
     }
 
     hightlightActiveLink();
