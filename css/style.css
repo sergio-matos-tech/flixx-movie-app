@@ -371,3 +371,12 @@ section h2 {
 .alert-error {
   background: red;
 }
+
+.self-github {
+  color: var(--color-secondary);
+
+}
+
+.self-github:hover {
+  text-decoration: underline;
+}
