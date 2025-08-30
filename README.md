@@ -1,9 +1,11 @@
 # Flixx | Movie & TV Show Discovery App
 
+<img width="1899" height="928" alt="image" src="https://github.com/user-attachments/assets/b88a274b-6c8c-40d4-bfb5-5f7319807e19" /> <br>
+
 
 Flixx is a responsive and dynamic web application for discovering popular and currently playing movies and TV shows. Built with vanilla JavaScript, this project leverages **The Movie Database (TMDb) API** to fetch and display real-time data in a clean, modern interface. It serves as an excellent example of a client-side application that interacts with a third-party RESTful API, manages state, and handles dynamic UI updates without a framework.
 
-**Live Demo:** [https://shenrique08.github.io/flixx-movie-app/]
+**Live Demo:** [https://sergio-matos-tech.github.io/flixx-movie-app/]
 
 ---
 
